@@ -1,0 +1,885 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/1/2020 6:47:53 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-CH7B7GJ"
+  DTS:CreatorName="DESKTOP-CH7B7GJ\raymo"
+  DTS:DTSID="{D4B075E5-3DCC-4101-AB11-EA037C8B2418}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="STAGE-sysjobs"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{431BB30E-F9BD-4C7B-918F-3BD65AD63243}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract and Stage sysjobs"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D2F9359D-F699-48C0-B864-529A61E83623}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract and Stage sysjobs"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract and Stage sysjobs\Extract sysjobs"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract sysjobs"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+FROM dbo.sysjobs
+-- update for incremental extract for all jobs
+WHERE [job_id] = '7405EA22-471A-4D24-B486-77C04B96EC10';</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract and Stage sysjobs\Extract sysjobs.Connections[OleDbConnection]"
+                  connectionManagerID="{39B6C842-0251-4D2C-9408-AA866791F184}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[msdb]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[job_id]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[job_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[job_id]"
+                      name="job_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[originating_server_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[originating_server_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[originating_server_id]"
+                      name="originating_server_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="128"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[enabled]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[enabled]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[enabled]"
+                      name="enabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      length="512"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[start_step_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[start_step_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[start_step_id]"
+                      name="start_step_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[category_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[category_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[category_id]"
+                      name="category_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[owner_sid]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[owner_sid]"
+                      length="85"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[owner_sid]"
+                      name="owner_sid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_eventlog]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_eventlog]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_eventlog]"
+                      name="notify_level_eventlog"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_email]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_email]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_email]"
+                      name="notify_level_email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_netsend]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_netsend]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_netsend]"
+                      name="notify_level_netsend"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_page]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_page]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_page]"
+                      name="notify_level_page"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_email_operator_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_email_operator_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_email_operator_id]"
+                      name="notify_email_operator_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_netsend_operator_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_netsend_operator_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_netsend_operator_id]"
+                      name="notify_netsend_operator_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_page_operator_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_page_operator_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_page_operator_id]"
+                      name="notify_page_operator_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[delete_level]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[delete_level]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[delete_level]"
+                      name="delete_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[date_created]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[date_created]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[date_created]"
+                      name="date_created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[date_modified]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[date_modified]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[date_modified]"
+                      name="date_modified"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[version_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[version_number]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[version_number]"
+                      name="version_number"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[job_id]"
+                      dataType="guid"
+                      name="job_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[originating_server_id]"
+                      dataType="i4"
+                      name="originating_server_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="128"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[enabled]"
+                      dataType="ui1"
+                      name="enabled" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="512"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[start_step_id]"
+                      dataType="i4"
+                      name="start_step_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[category_id]"
+                      dataType="i4"
+                      name="category_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[owner_sid]"
+                      dataType="bytes"
+                      length="85"
+                      name="owner_sid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_eventlog]"
+                      dataType="i4"
+                      name="notify_level_eventlog" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_email]"
+                      dataType="i4"
+                      name="notify_level_email" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_netsend]"
+                      dataType="i4"
+                      name="notify_level_netsend" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_level_page]"
+                      dataType="i4"
+                      name="notify_level_page" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_email_operator_id]"
+                      dataType="i4"
+                      name="notify_email_operator_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_netsend_operator_id]"
+                      dataType="i4"
+                      name="notify_netsend_operator_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[notify_page_operator_id]"
+                      dataType="i4"
+                      name="notify_page_operator_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[delete_level]"
+                      dataType="i4"
+                      name="delete_level" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[date_created]"
+                      dataType="dbTimeStamp"
+                      name="date_created" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[date_modified]"
+                      dataType="dbTimeStamp"
+                      name="date_modified" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].ExternalColumns[version_number]"
+                      dataType="i4"
+                      name="version_number" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[job_id]"
+                      dataType="guid"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[job_id]"
+                      name="job_id" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[originating_server_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[originating_server_id]"
+                      name="originating_server_id" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[enabled]"
+                      dataType="ui1"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[enabled]"
+                      name="enabled" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[description]"
+                      dataType="wstr"
+                      length="512"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[start_step_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[start_step_id]"
+                      name="start_step_id" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[category_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[category_id]"
+                      name="category_id" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[owner_sid]"
+                      dataType="bytes"
+                      length="85"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[owner_sid]"
+                      name="owner_sid" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_eventlog]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_eventlog]"
+                      name="notify_level_eventlog" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_email]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_email]"
+                      name="notify_level_email" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_netsend]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_netsend]"
+                      name="notify_level_netsend" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_page]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_level_page]"
+                      name="notify_level_page" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_email_operator_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_email_operator_id]"
+                      name="notify_email_operator_id" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_netsend_operator_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_netsend_operator_id]"
+                      name="notify_netsend_operator_id" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_page_operator_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[notify_page_operator_id]"
+                      name="notify_page_operator_id" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[delete_level]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[delete_level]"
+                      name="delete_level" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[date_created]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[date_created]"
+                      name="date_created" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[date_modified]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[date_modified]"
+                      name="date_modified" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[version_number]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[version_number]"
+                      name="version_number" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract and Stage sysjobs\Insert staging sysjobs"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert staging sysjobs"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[staging].[sysjobs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Connections[OleDbConnection]"
+                  connectionManagerID="{333B2282-B352-47CF-98D5-9B4727FB67C0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SQL_AGENT_DATA_MART]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[job_id]"
+                      cachedDataType="guid"
+                      cachedName="job_id"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[job_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[job_id]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[originating_server_id]"
+                      cachedDataType="i4"
+                      cachedName="originating_server_id"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[originating_server_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[originating_server_id]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[enabled]"
+                      cachedDataType="ui1"
+                      cachedName="enabled"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[enabled]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[enabled]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="512"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[start_step_id]"
+                      cachedDataType="i4"
+                      cachedName="start_step_id"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[start_step_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[start_step_id]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[category_id]"
+                      cachedDataType="i4"
+                      cachedName="category_id"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[category_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[category_id]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[owner_sid]"
+                      cachedDataType="bytes"
+                      cachedLength="85"
+                      cachedName="owner_sid"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[owner_sid]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[owner_sid]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[notify_level_eventlog]"
+                      cachedDataType="i4"
+                      cachedName="notify_level_eventlog"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_eventlog]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_eventlog]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[notify_level_email]"
+                      cachedDataType="i4"
+                      cachedName="notify_level_email"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_email]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_email]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[notify_level_netsend]"
+                      cachedDataType="i4"
+                      cachedName="notify_level_netsend"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_netsend]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_netsend]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[notify_level_page]"
+                      cachedDataType="i4"
+                      cachedName="notify_level_page"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_page]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_level_page]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[notify_email_operator_id]"
+                      cachedDataType="i4"
+                      cachedName="notify_email_operator_id"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_email_operator_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_email_operator_id]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[notify_netsend_operator_id]"
+                      cachedDataType="i4"
+                      cachedName="notify_netsend_operator_id"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_netsend_operator_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_netsend_operator_id]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[notify_page_operator_id]"
+                      cachedDataType="i4"
+                      cachedName="notify_page_operator_id"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_page_operator_id]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[notify_page_operator_id]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[delete_level]"
+                      cachedDataType="i4"
+                      cachedName="delete_level"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[delete_level]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[delete_level]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[date_created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_created"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[date_created]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[date_created]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[date_modified]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date_modified"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[date_modified]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[date_modified]" />
+                    <inputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].Columns[version_number]"
+                      cachedDataType="i4"
+                      cachedName="version_number"
+                      externalMetadataColumnId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[version_number]"
+                      lineageId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output].Columns[version_number]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[job_id]"
+                      dataType="guid"
+                      name="job_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[originating_server_id]"
+                      dataType="i4"
+                      name="originating_server_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="128"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[enabled]"
+                      dataType="ui1"
+                      name="enabled" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="512"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[start_step_id]"
+                      dataType="i4"
+                      name="start_step_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[category_id]"
+                      dataType="i4"
+                      name="category_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[owner_sid]"
+                      dataType="bytes"
+                      length="85"
+                      name="owner_sid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_eventlog]"
+                      dataType="i4"
+                      name="notify_level_eventlog" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_email]"
+                      dataType="i4"
+                      name="notify_level_email" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_netsend]"
+                      dataType="i4"
+                      name="notify_level_netsend" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_level_page]"
+                      dataType="i4"
+                      name="notify_level_page" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_email_operator_id]"
+                      dataType="i4"
+                      name="notify_email_operator_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_netsend_operator_id]"
+                      dataType="i4"
+                      name="notify_netsend_operator_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[notify_page_operator_id]"
+                      dataType="i4"
+                      name="notify_page_operator_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[delete_level]"
+                      dataType="i4"
+                      name="delete_level" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[date_created]"
+                      dataType="dbTimeStamp"
+                      name="date_created" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[date_modified]"
+                      dataType="dbTimeStamp"
+                      name="date_modified" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[version_number]"
+                      dataType="i4"
+                      name="version_number" />
+                    <externalMetadataColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input].ExternalColumns[STAGING_KEY]"
+                      dataType="i4"
+                      name="STAGING_KEY" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract and Stage sysjobs.Paths[OLE DB Source Output]"
+              endId="Package\Extract and Stage sysjobs\Insert staging sysjobs.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extract and Stage sysjobs\Extract sysjobs.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Extract and Stage sysjobs"
+          TopLeft="219.5,213.687498938603" />
+        <AnnotationLayout
+          Text="TO DO&#xD;&#xA;TRUNCATE staging table&#xD;&#xA;Add ETL_RUN_KEY as package parameter &#xD;&#xA;UPDATE select to do incremental extract"
+          ParentId="Package"
+          Size="236,77"
+          Id="3a74714e-f6a9-4b77-a0f0-a7c921c0d5f7"
+          TopLeft="27.75,32.7708331705588">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Color="#FF1E1E1E">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract and Stage sysjobs">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.5,42"
+          Id="Package\Extract and Stage sysjobs\Extract sysjobs"
+          TopLeft="102.5,57.9583330454512" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Extract and Stage sysjobs\Insert staging sysjobs"
+          TopLeft="84.25,139.208332641878" />
+        <EdgeLayout
+          Id="Package\Extract and Stage sysjobs.Paths[OLE DB Source Output]"
+          TopLeft="175.75,99.9583330454512">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,39.2499995964268"
+              Start="0,0"
+              End="0,31.7499995964268">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7499995964268" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and Stage sysjobs\Extract sysjobs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract and Stage sysjobs\Insert staging sysjobs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,23 @@
+﻿CREATE TABLE [staging].[sysjobs] (
+    [job_id] uniqueidentifier,
+    [originating_server_id] int,
+    [name] nvarchar(128),
+    [enabled] tinyint,
+    [description] nvarchar(512),
+    [start_step_id] int,
+    [category_id] int,
+    [owner_sid] binary(85),
+    [notify_level_eventlog] int,
+    [notify_level_email] int,
+    [notify_level_netsend] int,
+    [notify_level_page] int,
+    [notify_email_operator_id] int,
+    [notify_netsend_operator_id] int,
+    [notify_page_operator_id] int,
+    [delete_level] int,
+    [date_created] datetime,
+    [date_modified] datetime,
+    [version_number] int,
+	--[ETL_RUN_KEY]	BIGINT NOT NULL,
+	[STAGING_KEY]	INT IDENTITY NOT NULL
+)
