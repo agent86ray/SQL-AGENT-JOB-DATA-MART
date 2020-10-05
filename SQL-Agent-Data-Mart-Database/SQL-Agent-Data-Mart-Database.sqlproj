@@ -61,11 +61,14 @@
     <Folder Include="staging" />
     <Folder Include="staging\Tables" />
     <Folder Include="staging\Sequences" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\staging.sql" />
     <Build Include="staging\Tables\sysjobs.sql" />
     <Build Include="staging\Sequences\ETL_RUN_SEQUENCE.sql" />
     <Build Include="staging\Tables\sysjobsteps.sql" />
+    <Build Include="dbo\Stored Procedures\SimulateJobStepDuration.sql" />
   </ItemGroup>
 </Project>
