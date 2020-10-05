@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-CH7B7GJ\raymo"
   DTS:DTSID="{6B893B86-DC12-4FA0-9937-5E93BBF92E6C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
   DTS:LocaleID="1033"
   DTS:ObjectName="STAGE-sysjobsteps"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{636C2530-442B-4A52-B94D-94441F6313F0}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{64AAB552-AF80-4C5B-A0B8-8286606A1F27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -57,9 +57,8 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
-FROM msdb.dbo.sysjobsteps
--- can we make this incremental?
-WHERE [job_id] = '7405EA22-471A-4D24-B486-77C04B96EC10';</property>
+FROM msdb.dbo.sysjobsteps;
+-- can we make this incremental?</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1016,7 +1015,7 @@ WHERE [job_id] = '7405EA22-471A-4D24-B486-77C04B96EC10';</property>
           Id="Package\Extract and Stage sysjobsteps"
           TopLeft="74.75,114.562499430962" />
         <AnnotationLayout
-          Text="TO DO&#xD;&#xA;ADD TRUNCATE&#xD;&#xA;IMPLEMENT incremental extract"
+          Text="TO DO&#xA;ADD TRUNCATE&#xA;IMPLEMENT incremental extract"
           ParentId="Package"
           Size="184.5,64"
           Id="8b654415-bacb-49ac-884b-ed2bc8aa907c"
@@ -1039,13 +1038,13 @@ WHERE [job_id] = '7405EA22-471A-4D24-B486-77C04B96EC10';</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="169.5,42"
-          Id="Package\Extract and Stage sysjobsteps\Extract sysjobsteps"
-          TopLeft="130,57.6874997134631" />
-        <NodeLayout
           Size="199.5,42"
           Id="Package\Extract and Stage sysjobsteps\Insert staging sysjobsteps"
           TopLeft="119,138.395832645914" />
+        <NodeLayout
+          Size="169.5,42"
+          Id="Package\Extract and Stage sysjobsteps\Extract sysjobsteps"
+          TopLeft="130,57.6874997134631" />
         <EdgeLayout
           Id="Package\Extract and Stage sysjobsteps.Paths[OLE DB Source Output]"
           TopLeft="216.75,99.6874997134631">

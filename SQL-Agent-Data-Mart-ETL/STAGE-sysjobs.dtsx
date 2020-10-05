@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-CH7B7GJ\raymo"
   DTS:DTSID="{D4B075E5-3DCC-4101-AB11-EA037C8B2418}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
   DTS:LocaleID="1033"
   DTS:ObjectName="STAGE-sysjobs"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{431BB30E-F9BD-4C7B-918F-3BD65AD63243}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{D5860346-4B2B-4D66-BF71-717067CCA6DF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -57,9 +57,8 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
-FROM dbo.sysjobs
--- update for incremental extract for all jobs
-WHERE [job_id] = '7405EA22-471A-4D24-B486-77C04B96EC10';</property>
+FROM dbo.sysjobs;
+-- update for incremental extract for all jobs</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -805,7 +804,7 @@ WHERE [job_id] = '7405EA22-471A-4D24-B486-77C04B96EC10';</property>
           Id="Package\Extract and Stage sysjobs"
           TopLeft="219.5,213.687498938603" />
         <AnnotationLayout
-          Text="TO DO&#xD;&#xA;TRUNCATE staging table&#xD;&#xA;Add ETL_RUN_KEY as package parameter &#xD;&#xA;UPDATE select to do incremental extract"
+          Text="TO DO&#xA;TRUNCATE staging table&#xA;Add ETL_RUN_KEY as package parameter &#xA;UPDATE select to do incremental extract"
           ParentId="Package"
           Size="236,77"
           Id="3a74714e-f6a9-4b77-a0f0-a7c921c0d5f7"
@@ -828,13 +827,13 @@ WHERE [job_id] = '7405EA22-471A-4D24-B486-77C04B96EC10';</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="149.5,42"
-          Id="Package\Extract and Stage sysjobs\Extract sysjobs"
-          TopLeft="102.5,57.9583330454512" />
-        <NodeLayout
           Size="180,42"
           Id="Package\Extract and Stage sysjobs\Insert staging sysjobs"
           TopLeft="84.25,139.208332641878" />
+        <NodeLayout
+          Size="149.5,42"
+          Id="Package\Extract and Stage sysjobs\Extract sysjobs"
+          TopLeft="102.5,57.9583330454512" />
         <EdgeLayout
           Id="Package\Extract and Stage sysjobs.Paths[OLE DB Source Output]"
           TopLeft="175.75,99.9583330454512">
