@@ -7,6 +7,6 @@
     DTS:Name="ServerName">@[$Project::SQL_AGENT_DATA_MART_ServerName]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=localhost;Initial Catalog=SQL_AGENT_DATA_MART;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=DESKTOP-U8PAEJC\SQLDEV2019;Initial Catalog=SQL-Agent-Data-Mart;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

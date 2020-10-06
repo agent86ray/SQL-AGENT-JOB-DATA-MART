@@ -7,12 +7,12 @@
   DTS:CreatorName="EC2AMAZ-B4U5U4C\Administrator"
   DTS:DTSID="{AFA3DA5B-796A-481B-BBAD-1CC36759C784}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{E4D45601-CAD1-41C9-8D71-834014D18410}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{BCCE0565-1797-4C6E-9B68-155E22E83377}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -825,16 +825,16 @@ FROM msdb.dbo.sysjobs</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="472,155" />
-        <NodeLayout
           Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="467,248" />
+          TopLeft="226.333342896567,187.67999952062" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="231.333342896567,94.6799995206197" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="543.9,196.6">
+          TopLeft="303.233342896567,136.27999952062">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -858,14 +858,6 @@ FROM msdb.dbo.sysjobs</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -875,6 +867,14 @@ FROM msdb.dbo.sysjobs</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
