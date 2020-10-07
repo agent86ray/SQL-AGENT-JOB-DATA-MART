@@ -11,8 +11,9 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="BEGIN-ETL"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{15E9BC21-4D88-4453-AB63-C43627F682C4}">
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{21439470-A3C4-418A-B577-FA8F50A7D1BF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -65,7 +66,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="167.2,41.6"
+          Size="167,41.5"
           Id="Package\CREATE ETL LOG"
           TopLeft="235.333323982027,70.7200005620321" />
       </GraphLayout>

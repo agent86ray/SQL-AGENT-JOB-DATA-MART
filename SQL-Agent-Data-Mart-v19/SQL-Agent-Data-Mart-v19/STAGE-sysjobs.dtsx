@@ -11,8 +11,9 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{0E04E41C-8F40-49C9-B439-30B5E5DC9723}">
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{8ED56C9D-D355-4E33-8F81-0DFAB2078EB5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -947,13 +948,13 @@ FROM msdb.dbo.sysjobs</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
-          Size="222.4,41.6"
+          Size="222.5,41.5"
           Id="Package\EXTRACT and STAGE sysjobs"
           TopLeft="210.166658533944,239.153335190243" />
         <NodeLayout
-          Size="146.4,41.6"
+          Size="146.5,41.5"
           Id="Package\GET ETL LOG"
           TopLeft="240.666657103433,138.66666776869" />
         <EdgeLayout
@@ -961,7 +962,7 @@ FROM msdb.dbo.sysjobs</property>
           TopLeft="317.616657818689,180.26666776869">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,58.8866674215529"
               Start="0,0"
               End="0,51.3866674215529">
@@ -981,7 +982,7 @@ FROM msdb.dbo.sysjobs</property>
         <AnnotationLayout
           Text="Add TRUNCATE staging sysjobs"
           ParentId="Package"
-          Size="182.4,60"
+          Size="182.5,37.5"
           Id="c551b534-b2e5-44ec-bb09-90b2b5cbf907"
           TopLeft="52.6666645738814,33.9733336033291">
           <AnnotationLayout.FontInfo>
@@ -1002,17 +1003,17 @@ FROM msdb.dbo.sysjobs</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151.2,41.6"
+          Size="151,41.5"
           Id="Package\EXTRACT and STAGE sysjobs\STAGE sysjobs"
           TopLeft="228.333342817094,259.093333421496" />
         <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\EXTRACT and STAGE sysjobs\EXTRACT sysjobs"
-          TopLeft="220.666676653756,93.2933328429328" />
-        <NodeLayout
-          Size="148,41.6"
+          Size="148,41.5"
           Id="Package\EXTRACT and STAGE sysjobs\GET ETL_KEY"
           TopLeft="227.333324299919,174.026668049706" />
+        <NodeLayout
+          Size="165,41.5"
+          Id="Package\EXTRACT and STAGE sysjobs\EXTRACT sysjobs"
+          TopLeft="220.666676653756,93.2933328429328" />
         <EdgeLayout
           Id="Package\EXTRACT and STAGE sysjobs.Paths[OLE DB Source Output]"
           TopLeft="302.200000476837,134.893332842933">
