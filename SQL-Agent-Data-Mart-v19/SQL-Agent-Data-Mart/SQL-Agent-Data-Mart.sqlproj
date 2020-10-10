@@ -63,6 +63,7 @@
     <Folder Include="dbo\Stored Procedures" />
     <Folder Include="dbo\Sequences" />
     <Folder Include="dbo\Tables" />
+    <Folder Include="staging\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\staging.sql" />
@@ -75,5 +76,11 @@
     <Build Include="dbo\Tables\ETL_LOG.sql" />
     <Build Include="dbo\Stored Procedures\CREATE_ETL_LOG.sql" />
     <Build Include="dbo\Stored Procedures\GET_ETL_LOG.sql" />
+    <Build Include="staging\Tables\sysjobs_UPDATE.sql" />
+    <Build Include="staging\Stored Procedures\STAGE_sysjobs_UPDATE.sql" />
+    <Build Include="dbo\Tables\sysjobs.sql" />
+    <Build Include="dbo\Sequences\JOB_KEY.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_sysjobs_AND_sysjobsteps.sql" />
+    <Build Include="dbo\Tables\sysjobsteps.sql" />
   </ItemGroup>
 </Project>
