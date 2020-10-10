@@ -9,11 +9,6 @@ BEGIN
 		every row from staging.
 	*/
 
-	-- Set the JOB_KEY values for Inserts
-	UPDATE [staging].[sysjobs_UPDATE]
-		SET [JOB_KEY] = NEXT VALUE FOR [dbo].[JOB_KEY]
-	WHERE [ACTION] = 'I';
-
 	-- INSERT new rows into sysjobs whether we determined an INSERT or an UPDATE
 	INSERT [dbo].[sysjobs] (
 	  [JOB_KEY]
@@ -40,7 +35,7 @@ BEGIN
 	, [STAGING_KEY]
 	)
 	SELECT
-	  u.[JOB_KEY]
+	  u.[NEW_JOB_KEY]
 	, j.[job_id]
 	, j.[originating_server_id]
 	, j.[name]
@@ -99,7 +94,7 @@ BEGIN
 	, [STAGING_KEY]	
 	)
 	SELECT
-	  u.[JOB_KEY]
+	  u.[NEW_JOB_KEY]
 	, s.[job_id]
 	, [step_id]
 	, [step_name]
