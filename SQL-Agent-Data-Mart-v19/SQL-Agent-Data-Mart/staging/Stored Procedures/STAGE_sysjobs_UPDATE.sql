@@ -46,15 +46,17 @@ BEGIN
 		[ETL_KEY]
 	,	[STAGING_KEY]
 	,	[ACTION]
-	,	[JOB_KEY]
 	,	[job_id]
+	,	[JOB_KEY]
+	,	[NEW_JOB_KEY]
 	)
 	SELECT
 		[ETL_KEY]
 	,	[STAGING_KEY]
 	,	[ACTION]
-	,	[JOB_KEY]		-- NULL if insert
 	,	[job_id]
+	,	[JOB_KEY]		-- NULL if insert
+	,	NEXT VALUE FOR [dbo].[JOB_KEY]
 	FROM CTE_sysjobs
 	WHERE [Action] IN ('I', 'U');
 END
