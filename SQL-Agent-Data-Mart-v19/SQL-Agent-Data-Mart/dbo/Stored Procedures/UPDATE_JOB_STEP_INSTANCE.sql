@@ -1,0 +1,73 @@
+﻿CREATE PROCEDURE [dbo].[UPDATE_JOB_STEP_INSTANCE]
+AS
+BEGIN
+	/*
+		Incremental load of JOB_STEP_INSTANCE table from [staging].[sysjobhistory].
+
+	*/
+
+	-- Get the "current" row for each job
+	;WITH CTE_CURRENT_JOB AS (
+		SELECT
+			[JOB_KEY]
+		,	[job_id]
+		,	ROW_NUMBER() OVER (
+				PARTITION BY [job_id], [date_modified]
+				ORDER BY [job_id], [date_modified] DESC
+			) AS [ROW_NUMBER]
+		FROM [dbo].[sysjobs]
+	)
+
+	INSERT [dbo].[JOB_INSTANCE] (
+	  [JOB_KEY]
+	, [INSTANCE_ID]
+	, [job_id]
+	, [step_id]
+	, [step_name]
+	, [sql_message_id]
+	, [sql_severity]
+	, [message]
+	, [run_status]
+	, [run_date]
+	, [run_time]
+	, [run_duration]
+	, [operator_id_emailed]
+	, [operator_id_netsent]
+	, [operator_id_paged]
+	, [retries_attempted]
+	, [server]
+	, [start_time]
+	, [end_time]
+	, [duration_seconds]
+	, [ETL_KEY]	
+	, [STAGING_KEY]	
+	)
+	SELECT
+		j.JOB_KEY  
+	,	[instance_id]
+	, h.[job_id]
+	, [step_id]
+	, [step_name]
+	, [sql_message_id]
+	, [sql_severity]
+	, [message]
+	, [run_status]
+	, [run_date]
+	, [run_time]
+	, [run_duration]
+	, [operator_id_emailed]
+	, [operator_id_netsent]
+	, [operator_id_paged]
+	, [retries_attempted]
+	, [server]
+	, [start_time]
+	, [end_time]
+	, [duration_seconds]
+	, [ETL_KEY]
+	, [STAGING_KEY]
+	FROM [staging].[sysjobhistory] h
+	JOIN CTE_CURRENT_JOB j
+	ON j.[job_id] = h.[job_id]
+	WHERE h.[step_id] > 0;				-- only get job step outcome rows
+END
+
