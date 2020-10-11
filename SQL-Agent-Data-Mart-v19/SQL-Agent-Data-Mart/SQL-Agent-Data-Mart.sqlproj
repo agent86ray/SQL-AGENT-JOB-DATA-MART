@@ -82,5 +82,9 @@
     <Build Include="dbo\Sequences\JOB_KEY.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_sysjobs_AND_sysjobsteps.sql" />
     <Build Include="dbo\Tables\sysjobsteps.sql" />
+    <Build Include="dbo\Tables\ETL_HISTORY_LOG.sql" />
+    <Build Include="dbo\Tables\JOB_INSTANCE.sql" />
+    <Build Include="dbo\Stored Procedures\CREATE_ETL_HISTORY_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\GET_ETL_HISTORY_LOG.sql" />
   </ItemGroup>
 </Project>
