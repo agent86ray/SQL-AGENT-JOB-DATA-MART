@@ -86,5 +86,6 @@
     <Build Include="dbo\Tables\JOB_INSTANCE.sql" />
     <Build Include="dbo\Stored Procedures\CREATE_ETL_HISTORY_LOG.sql" />
     <Build Include="dbo\Stored Procedures\GET_ETL_HISTORY_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_JOB_INSTANCE.sql" />
   </ItemGroup>
 </Project>

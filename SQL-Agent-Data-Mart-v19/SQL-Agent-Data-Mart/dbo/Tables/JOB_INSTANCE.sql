@@ -17,5 +17,9 @@
 	[operator_id_paged] [int] NOT NULL,
 	[retries_attempted] [int] NOT NULL,
 	[server] [sysname] NOT NULL,
-	[ETL_KEY]		INT NOT NULL,
+    [start_time] DATETIME NOT NULL,
+    [end_time] DATETIME NOT NULL,
+    [duration_seconds] int,
+    [ETL_KEY] INT NOT NULL,
+	[STAGING_KEY] INT NOT NULL
 )
