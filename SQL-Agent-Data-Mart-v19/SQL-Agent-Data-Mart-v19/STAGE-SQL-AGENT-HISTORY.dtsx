@@ -1,0 +1,1172 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/11/2020 5:51:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-CU621A8"
+  DTS:CreatorName="DESKTOP-CU621A8\raymo"
+  DTS:DTSID="{58C80CBA-770B-43AA-A515-76A2FF04975D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="STAGE-SQL-AGENT-HISTORY"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{D90D8760-300C-430A-ABAD-73DFC8405B77}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3FF0C800-A160-461B-847B-7448290C4E17}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BEGIN_INSTANCE_ID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0D9EF5BF-9780-4FDC-92B2-1CFCF605FEEC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="END_INSTANCE_ID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6FE3E3D6-7291-4419-8341-D94C1391697A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ETL_KEY">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{96394F52-0AAC-4346-B551-FD4975B04388}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\STAGE sysjobhistory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{018690D3-EF9D-4799-8BC6-E0234B779C9C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="STAGE sysjobhistory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="ADD ETL_KEY"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Output].Columns[ETL_KEY]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Output].Columns[ETL_KEY]"
+                          name="ETL_KEY"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::ETL_KEY]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::ETL_KEY]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="EXTRACT sysjobhistory INCREMENTAL"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+  [instance_id]
+, [job_id]
+, [step_id]
+, [step_name]
+, [sql_message_id]
+, [sql_severity]
+, [message]
+, [run_status]
+, [run_date]
+, [run_time]
+, [run_duration]
+, [operator_id_emailed]
+, [operator_id_netsent]
+, [operator_id_paged]
+, [retries_attempted]
+, [server]
+, msdb.dbo.agent_datetime(run_date, run_time) AS [start_time]
+, DATEADD(
+				second
+			,	[run_duration] / 10000 * 3600 +			-- convert hours to seconds
+				([run_duration] % 10000) / 100 * 60 +	-- convert minutes to seconds
+				([run_duration] % 10000) % 100			-- get seconds
+			,	msdb.dbo.agent_datetime(run_date, run_time)) [end_time]
+			,	[run_duration] / 10000 * 3600 +			-- convert hours to seconds
+				([run_duration] % 10000) / 100 * 60 +	-- convert minutes to seconds
+				([run_duration] % 10000) % 100			-- get seconds
+					AS [duration_seconds]
+
+FROM [dbo].[sysjobhistory]
+WHERE [instance_id] BETWEEN ? AND ?
+AND [run_status] = 1;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{3FF0C800-A160-461B-847B-7448290C4E17};"Parameter1:Input",{0D9EF5BF-9780-4FDC-92B2-1CFCF605FEEC};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Connections[OleDbConnection]"
+                      connectionManagerID="{59555632-FE47-45D3-AD0A-DEB015528C38}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[msdb]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[instance_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[instance_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[instance_id]"
+                          name="instance_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[job_id]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[job_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[job_id]"
+                          name="job_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[step_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[step_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[step_id]"
+                          name="step_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[step_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[step_name]"
+                          length="128"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[step_name]"
+                          name="step_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[sql_message_id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[sql_message_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[sql_message_id]"
+                          name="sql_message_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[sql_severity]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[sql_severity]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[sql_severity]"
+                          name="sql_severity"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[message]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[message]"
+                          length="4000"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[message]"
+                          name="message"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_status]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_status]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_status]"
+                          name="run_status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_date]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_date]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_date]"
+                          name="run_date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_time]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_time]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_time]"
+                          name="run_time"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_duration]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_duration]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_duration]"
+                          name="run_duration"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_emailed]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[operator_id_emailed]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_emailed]"
+                          name="operator_id_emailed"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_netsent]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[operator_id_netsent]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_netsent]"
+                          name="operator_id_netsent"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_paged]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[operator_id_paged]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_paged]"
+                          name="operator_id_paged"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[retries_attempted]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[retries_attempted]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[retries_attempted]"
+                          name="retries_attempted"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[server]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[server]"
+                          length="128"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[server]"
+                          name="server"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[start_time]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[start_time]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[start_time]"
+                          name="start_time"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[end_time]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[end_time]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[end_time]"
+                          name="end_time"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[duration_seconds]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[duration_seconds]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[duration_seconds]"
+                          name="duration_seconds"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[instance_id]"
+                          dataType="i4"
+                          name="instance_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[job_id]"
+                          dataType="guid"
+                          name="job_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[step_id]"
+                          dataType="i4"
+                          name="step_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[step_name]"
+                          dataType="wstr"
+                          length="128"
+                          name="step_name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[sql_message_id]"
+                          dataType="i4"
+                          name="sql_message_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[sql_severity]"
+                          dataType="i4"
+                          name="sql_severity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[message]"
+                          dataType="wstr"
+                          length="4000"
+                          name="message" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_status]"
+                          dataType="i4"
+                          name="run_status" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_date]"
+                          dataType="i4"
+                          name="run_date" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_time]"
+                          dataType="i4"
+                          name="run_time" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[run_duration]"
+                          dataType="i4"
+                          name="run_duration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[operator_id_emailed]"
+                          dataType="i4"
+                          name="operator_id_emailed" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[operator_id_netsent]"
+                          dataType="i4"
+                          name="operator_id_netsent" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[operator_id_paged]"
+                          dataType="i4"
+                          name="operator_id_paged" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[retries_attempted]"
+                          dataType="i4"
+                          name="retries_attempted" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[server]"
+                          dataType="wstr"
+                          length="128"
+                          name="server" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[start_time]"
+                          dataType="dbTimeStamp"
+                          name="start_time" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[end_time]"
+                          dataType="dbTimeStamp"
+                          name="end_time" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].ExternalColumns[duration_seconds]"
+                          dataType="i4"
+                          name="duration_seconds" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[instance_id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[instance_id]"
+                          name="instance_id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[job_id]"
+                          dataType="guid"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[job_id]"
+                          name="job_id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[step_id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[step_id]"
+                          name="step_id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[step_name]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[step_name]"
+                          name="step_name" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[sql_message_id]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[sql_message_id]"
+                          name="sql_message_id" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[sql_severity]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[sql_severity]"
+                          name="sql_severity" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[message]"
+                          dataType="wstr"
+                          length="4000"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[message]"
+                          name="message" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_status]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_status]"
+                          name="run_status" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_date]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_date]"
+                          name="run_date" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_time]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_time]"
+                          name="run_time" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_duration]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[run_duration]"
+                          name="run_duration" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[operator_id_emailed]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[operator_id_emailed]"
+                          name="operator_id_emailed" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[operator_id_netsent]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[operator_id_netsent]"
+                          name="operator_id_netsent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[operator_id_paged]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[operator_id_paged]"
+                          name="operator_id_paged" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[retries_attempted]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[retries_attempted]"
+                          name="retries_attempted" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[server]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[server]"
+                          name="server" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[start_time]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[start_time]"
+                          name="start_time" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[end_time]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[end_time]"
+                          name="end_time" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[duration_seconds]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[duration_seconds]"
+                          name="duration_seconds" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="staging sysjobhistory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[staging].[sysjobhistory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Connections[OleDbConnection]"
+                      connectionManagerID="{20944CC8-8BD5-41DA-8C8A-E30417341ED7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SQL_AGENT_DATA_MART]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[instance_id]"
+                          cachedDataType="i4"
+                          cachedName="instance_id"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[instance_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[instance_id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[job_id]"
+                          cachedDataType="guid"
+                          cachedName="job_id"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[job_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[job_id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[step_id]"
+                          cachedDataType="i4"
+                          cachedName="step_id"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[step_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[step_id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[step_name]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="step_name"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[step_name]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[step_name]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[sql_message_id]"
+                          cachedDataType="i4"
+                          cachedName="sql_message_id"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[sql_message_id]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[sql_message_id]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[sql_severity]"
+                          cachedDataType="i4"
+                          cachedName="sql_severity"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[sql_severity]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[sql_severity]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[message]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="message"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[message]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[message]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[run_status]"
+                          cachedDataType="i4"
+                          cachedName="run_status"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_status]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_status]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[run_date]"
+                          cachedDataType="i4"
+                          cachedName="run_date"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_date]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_date]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[run_time]"
+                          cachedDataType="i4"
+                          cachedName="run_time"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_time]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_time]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[run_duration]"
+                          cachedDataType="i4"
+                          cachedName="run_duration"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_duration]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[run_duration]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[operator_id_emailed]"
+                          cachedDataType="i4"
+                          cachedName="operator_id_emailed"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[operator_id_emailed]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_emailed]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[operator_id_netsent]"
+                          cachedDataType="i4"
+                          cachedName="operator_id_netsent"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[operator_id_netsent]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_netsent]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[operator_id_paged]"
+                          cachedDataType="i4"
+                          cachedName="operator_id_paged"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[operator_id_paged]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[operator_id_paged]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[retries_attempted]"
+                          cachedDataType="i4"
+                          cachedName="retries_attempted"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[retries_attempted]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[retries_attempted]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[server]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="server"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[server]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[server]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[start_time]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="start_time"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[start_time]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[start_time]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[end_time]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="end_time"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[end_time]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[end_time]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[duration_seconds]"
+                          cachedDataType="i4"
+                          cachedName="duration_seconds"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[duration_seconds]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output].Columns[duration_seconds]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].Columns[ETL_KEY]"
+                          cachedDataType="i4"
+                          cachedName="ETL_KEY"
+                          externalMetadataColumnId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[ETL_KEY]"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Output].Columns[ETL_KEY]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[instance_id]"
+                          dataType="i4"
+                          name="instance_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[job_id]"
+                          dataType="guid"
+                          name="job_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[step_id]"
+                          dataType="i4"
+                          name="step_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[step_name]"
+                          dataType="wstr"
+                          length="128"
+                          name="step_name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[sql_message_id]"
+                          dataType="i4"
+                          name="sql_message_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[sql_severity]"
+                          dataType="i4"
+                          name="sql_severity" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[message]"
+                          dataType="wstr"
+                          length="4000"
+                          name="message" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_status]"
+                          dataType="i4"
+                          name="run_status" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_date]"
+                          dataType="i4"
+                          name="run_date" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_time]"
+                          dataType="i4"
+                          name="run_time" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[run_duration]"
+                          dataType="i4"
+                          name="run_duration" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[operator_id_emailed]"
+                          dataType="i4"
+                          name="operator_id_emailed" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[operator_id_netsent]"
+                          dataType="i4"
+                          name="operator_id_netsent" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[operator_id_paged]"
+                          dataType="i4"
+                          name="operator_id_paged" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[retries_attempted]"
+                          dataType="i4"
+                          name="retries_attempted" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[server]"
+                          dataType="wstr"
+                          length="128"
+                          name="server" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[start_time]"
+                          dataType="dbTimeStamp"
+                          name="start_time" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[end_time]"
+                          dataType="dbTimeStamp"
+                          name="end_time" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[duration_seconds]"
+                          dataType="i4"
+                          name="duration_seconds" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[ETL_KEY]"
+                          dataType="i4"
+                          name="ETL_KEY" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input].ExternalColumns[STAGING_KEY]"
+                          dataType="i4"
+                          name="STAGING_KEY" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\STAGE sysjobhistory.Paths[Derived Column Output]"
+                  endId="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence Container\STAGE sysjobhistory.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container 1"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{816E7D18-450C-4A65-989F-3024C8965AE1}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container 1">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container 1\GET ETL HISTORY LOG"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{983425a1-8e81-46b5-8907-9c96050faf69}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="GET ETL HISTORY LOG"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{20944CC8-8BD5-41DA-8C8A-E30417341ED7}"
+              SQLTask:SqlStatementSource="EXEC [dbo].[GET_ETL_HISTORY_LOG]&#xA; @P_ETL_KEY = ? OUTPUT&#xA;,@P_BEGIN_INSTANCE_ID = ? OUTPUT&#xA;,@P_END_INSTANCE_ID = ? OUTPUT;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ETL_KEY"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::BEGIN_INSTANCE_ID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::END_INSTANCE_ID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container 1\TRUNCATE staging sysjobhostory"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{751FA90C-A3CB-439A-A459-62C2248C3071}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TRUNCATE staging sysjobhostory"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{20944CC8-8BD5-41DA-8C8A-E30417341ED7}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [staging].[sysjobhistory];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FB9B3275-858E-4F2A-B1D1-97F52CBF193E}"
+      DTS:From="Package\Sequence Container 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Sequence Container\STAGE sysjobhistory"
+          TopLeft="112.5,66" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="397,190.5"
+          Size="397,233.5"
+          Id="Package\Sequence Container"
+          TopLeft="283.5,284" />
+        <NodeLayout
+          Size="189.5,42"
+          Id="Package\Sequence Container 1\GET ETL HISTORY LOG"
+          TopLeft="51,16.5" />
+        <NodeLayout
+          Size="236.5,42"
+          Id="Package\Sequence Container 1\TRUNCATE staging sysjobhostory"
+          TopLeft="317.5,17" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="602,122"
+          Size="602,165"
+          Id="Package\Sequence Container 1"
+          TopLeft="178,62.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="480.5,227.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.5"
+              Start="0,0"
+              End="0,49">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\STAGE sysjobhistory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="260.5,42"
+          Id="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL"
+          TopLeft="361.5,80" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Sequence Container\STAGE sysjobhistory\ADD ETL_KEY"
+          TopLeft="418.5,169.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container\STAGE sysjobhistory.Paths[OLE DB Source Output]"
+          TopLeft="491.375,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.5"
+              Start="0,0"
+              End="0,40">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177.5,42"
+          Id="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory"
+          TopLeft="400,278" />
+        <EdgeLayout
+          Id="Package\Sequence Container\STAGE sysjobhistory.Paths[Derived Column Output]"
+          TopLeft="489.875,211.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.5"
+              Start="0,0"
+              End="0,59">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\STAGE sysjobhistory\EXTRACT sysjobhistory INCREMENTAL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\STAGE sysjobhistory\staging sysjobhistory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

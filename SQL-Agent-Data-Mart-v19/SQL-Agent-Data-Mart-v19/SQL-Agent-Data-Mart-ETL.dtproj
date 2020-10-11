@@ -34,6 +34,7 @@
           <SSIS:Package SSIS:Name="UPDATE-SQL-AGENT-Dimensions.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="UPDATE-SQL-AGENT-HISTORY.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="BEGIN_ETL_HISTORY_JOB.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="STAGE-SQL-AGENT-HISTORY.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="msdb.conmgr" />
@@ -306,10 +307,10 @@
                 <SSIS:Property SSIS:Name="Name">UPDATE-SQL-AGENT-HISTORY</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5E902A14-5159-4FF2-A327-560F243180CA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0685AC4F-E17E-42BF-B576-90EAD23A8A26}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -327,6 +328,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{1618DAE4-2F0D-4D4C-A659-B70EABA13881}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="STAGE-SQL-AGENT-HISTORY.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{58C80CBA-770B-43AA-A515-76A2FF04975D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">STAGE-SQL-AGENT-HISTORY</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">18</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D90D8760-300C-430A-ABAD-73DFC8405B77}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
