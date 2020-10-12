@@ -65,6 +65,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="staging\Stored Procedures" />
     <Folder Include="Scripts" />
+    <Folder Include="dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\staging.sql" />
@@ -103,6 +104,7 @@
     <Build Include="dbo\Tables\ACTIVE_JOBS.sql" />
     <Build Include="dbo\Tables\ACTIVE_JOBS_REFRESH.sql" />
     <Build Include="dbo\Stored Procedures\GET_ACTIVE_JOBS.sql" />
+    <Build Include="dbo\Views\vACTIVE_JOBS.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\DIMENSION queries.sql" />
