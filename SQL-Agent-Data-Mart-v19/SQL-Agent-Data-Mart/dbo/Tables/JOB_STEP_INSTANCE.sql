@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [dbo].[JOB_STEP_INSTANCE]
 (
 	[JOB_KEY]		[INT] NOT NULL,
-	[INSTANCE_ID]	[INT] NOT NULL,
+	[JOB_INSTANCE_ID]		[INT] NOT NULL,
+	[JOB_STEP_INSTANCE_ID]	[INT] NOT NULL,
 	[job_id] [uniqueidentifier] NOT NULL,
 	[step_id] [int] NOT NULL,
 	[step_name] [sysname] NOT NULL,
