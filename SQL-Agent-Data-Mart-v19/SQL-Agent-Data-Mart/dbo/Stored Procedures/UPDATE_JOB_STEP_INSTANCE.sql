@@ -7,7 +7,7 @@ BEGIN
 
 	*/
 
-	INSERT [dbo].[JOB_INSTANCE] (
+	INSERT [dbo].[JOB_STEP_INSTANCE] (
 	  [JOB_KEY]
 	, [INSTANCE_ID]
 	, [job_id]
