@@ -95,6 +95,10 @@
     <Build Include="dbo\Stored Procedures\UPDATE_JOB_INSTANCE_ALL_STEPS_COMPLETED.sql" />
     <Build Include="dbo\Tables\JOB_INSTANCE_ALL_STEPS_COMPLETED.sql" />
     <Build Include="dbo\Stored Procedures\CLOSE_ETL_DIMENSION_LOG.sql" />
+    <Build Include="dbo\Tables\JOB_STEP_AVERAGE_DURATION.sql" />
+    <Build Include="dbo\Stored Procedures\CALCULATE_JOB_STEP_AVERAGE_DURATION.sql" />
+    <Build Include="dbo\Tables\JOB_STEP_DURATION.sql" />
+    <Build Include="dbo\Stored Procedures\ACCUMULATE_JOB_STEP_DURATION.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\DIMENSION queries.sql" />
