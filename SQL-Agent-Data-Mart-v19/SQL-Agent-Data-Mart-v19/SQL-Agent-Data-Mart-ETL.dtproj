@@ -37,6 +37,7 @@
           <SSIS:Package SSIS:Name="INCREMENTAL-LOAD-JOB-STEP-INSTANCE.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="BEGIN-ETL_DIMENSION_JOB.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="END_ETL_DIMENSION_LOG.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="UPDATE-JOB-INSTANCE-ALL-STEPS-COMPLETED.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="msdb.conmgr" />
@@ -381,6 +382,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{3AA8B82E-8BDD-43C2-BB1F-DCBCAB544D83}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="UPDATE-JOB-INSTANCE-ALL-STEPS-COMPLETED.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{59812BE7-63BB-401B-8AFB-0B8EB0C63823}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">UPDATE-JOB-INSTANCE-ALL-STEPS-COMPLETED</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D9C5CE61-4EA5-46C0-A256-17308E88DD54}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
