@@ -291,10 +291,10 @@
                 <SSIS:Property SSIS:Name="Name">UPDATE-SQL-AGENT-Dimensions</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{27F66575-34B0-436E-A266-FF36C5D9E12C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2B524F34-4BBD-4D85-B657-C47E195DF190}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

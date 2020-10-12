@@ -89,5 +89,7 @@
     <Build Include="dbo\Stored Procedures\UPDATE_JOB_INSTANCE.sql" />
     <Build Include="dbo\Tables\JOB_STEP_INSTANCE.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_JOB_STEP_INSTANCE.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_JOB_CURRENT.sql" />
+    <Build Include="dbo\Tables\JOB_CURRENT.sql" />
   </ItemGroup>
 </Project>

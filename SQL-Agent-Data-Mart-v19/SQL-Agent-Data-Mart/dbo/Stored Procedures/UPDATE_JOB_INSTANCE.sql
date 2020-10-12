@@ -2,21 +2,10 @@
 AS
 BEGIN
 	/*
-		Incremental load of JOB_INSTANCE table from [staging].[sysjobhistory].
+		Incremental load of JOB_INSTANCE table from [staging].[sysjobhistory]. INSERT new rows where
+		the JOB_KEY does not exist in the JOB_INSTANCE table.
 
 	*/
-
-	-- Get the "current" row for each job
-	;WITH CTE_CURRENT_JOB AS (
-		SELECT
-			[JOB_KEY]
-		,	[job_id]
-		,	ROW_NUMBER() OVER (
-				PARTITION BY [job_id], [date_modified]
-				ORDER BY [job_id], [date_modified] DESC
-			) AS [ROW_NUMBER]
-		FROM [dbo].[sysjobs]
-	)
 
 	INSERT [dbo].[JOB_INSTANCE] (
 	  [JOB_KEY]
@@ -43,7 +32,7 @@ BEGIN
 	, [STAGING_KEY]	
 	)
 	SELECT
-		j.JOB_KEY  
+		c.JOB_KEY  
 	,	[instance_id]
 	, h.[job_id]
 	, [step_id]
@@ -66,7 +55,7 @@ BEGIN
 	, [ETL_KEY]
 	, [STAGING_KEY]
 	FROM [staging].[sysjobhistory] h
-	JOIN CTE_CURRENT_JOB j
-	ON j.[job_id] = h.[job_id]
+	JOIN [dbo].[JOB_CURRENT] c
+	ON c.[job_id] = h.[job_id]
 	WHERE h.[step_id] = 0;				-- only get job outcome rows
 END
