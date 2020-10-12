@@ -73,9 +73,9 @@
     <Build Include="dbo\Sequences\ETL_KEY.sql" />
     <Build Include="staging\Tables\sysjobhistory.sql" />
     <Build Include="staging\Tables\sysjobactivity.sql" />
-    <Build Include="dbo\Tables\ETL_LOG.sql" />
-    <Build Include="dbo\Stored Procedures\CREATE_ETL_LOG.sql" />
-    <Build Include="dbo\Stored Procedures\GET_ETL_LOG.sql" />
+    <Build Include="dbo\Tables\ETL_DIMENSION_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\CREATE_ETL_DIMENSION_LOG.sql" />
+    <Build Include="dbo\Stored Procedures\GET_ETL_DIMENSION_LOG.sql" />
     <Build Include="staging\Tables\sysjobs_UPDATE.sql" />
     <Build Include="staging\Stored Procedures\STAGE_sysjobs_UPDATE.sql" />
     <Build Include="dbo\Tables\sysjobs.sql" />

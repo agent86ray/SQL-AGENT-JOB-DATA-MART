@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-U8PAEJC"
   DTS:CreatorName="DESKTOP-U8PAEJC\RaymondBarley"
-  DTS:DTSID="{25E051EA-7A4D-44C9-9660-BE4AF8005758}"
+  DTS:DTSID="{0458EAAD-6238-4785-A99B-2AA9F7B3A4D3}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
   DTS:LocaleID="1033"
-  DTS:ObjectName="BEGIN-ETL"
+  DTS:ObjectName="BEGIN-ETL_DIMENSION_JOB"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{21439470-A3C4-418A-B577-FA8F50A7D1BF}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{352B3C1F-0200-4DE1-93FD-3C9A95A96F34}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -29,20 +29,20 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\CREATE ETL LOG"
+      DTS:refId="Package\CREATE ETL DIMENSION LOG"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{A56E57C6-FDBE-45A2-AF1C-7BC3F8D0AF48}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="CREATE ETL LOG"
+      DTS:ObjectName="CREATE ETL DIMENSION LOG"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server vNext CTP1.9; © 2018 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{20944CC8-8BD5-41DA-8C8A-E30417341ED7}"
-          SQLTask:SqlStatementSource="EXEC [dbo].[CREATE_ETL_LOG]&#xA;&#x9;@P_ETL_KEY = ?&#x9;OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="EXEC [dbo].[CREATE_ETL_DIMENSION_LOG]&#xA;&#x9;@P_ETL_KEY = ?&#x9;OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::ETL_KEY"
@@ -66,8 +66,8 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="167,41.5"
-          Id="Package\CREATE ETL LOG"
+          Size="221,42"
+          Id="Package\CREATE ETL DIMENSION LOG"
           TopLeft="235.333323982027,70.7200005620321" />
       </GraphLayout>
     </LayoutInfo>

@@ -12,8 +12,8 @@
   DTS:ObjectName="STAGE-SQL-AGENT-Dimensions"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{4AC7A47D-BE13-457F-BB34-CF23A3B98BD1}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{FCE17406-34A1-400B-AA17-4BBA1B5EE8E5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2013,7 +2013,7 @@ FROM msdb.dbo.sysjobs</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE stagin sysjobsteps"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2030,7 +2030,7 @@ FROM msdb.dbo.sysjobs</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE staging sysjobs"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2059,20 +2059,20 @@ FROM msdb.dbo.sysjobs</property>
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\GET ETL LOG"
+      DTS:refId="Package\GET ETL DIMENSION LOG"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{01CF5D4A-EAC8-4ECE-BA37-5C9C922AA9D6}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="GET ETL LOG"
+      DTS:ObjectName="GET ETL DIMENSION LOG"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server vNext CTP1.9; © 2018 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{20944CC8-8BD5-41DA-8C8A-E30417341ED7}"
-          SQLTask:SqlStatementSource="EXEC [dbo].[GET_ETL_LOG]&#xA;&#x9;@P_ETL_KEY = ? OUTPUT;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="EXEC [dbo].[GET_ETL_DIMENSION_LOG]&#xA;&#x9;@P_ETL_KEY = ? OUTPUT;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::ETL_KEY"
@@ -2088,7 +2088,7 @@ FROM msdb.dbo.sysjobs</property>
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{33D8FE08-9E77-4993-A622-0493904B9C81}"
-      DTS:From="Package\GET ETL LOG"
+      DTS:From="Package\GET ETL DIMENSION LOG"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\EXTRACT and STAGE SQL AGENT tables" />
@@ -2104,15 +2104,19 @@ FROM msdb.dbo.sysjobs</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="146.5,41.5"
-          Id="Package\GET ETL LOG"
-          TopLeft="468.666657103433,90.16666776869" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="222.5,41.5"
           Id="Package\EXTRACT and STAGE SQL AGENT tables\EXTRACT and STAGE sysjobs"
           TopLeft="38.666658533944,89.153335190243" />
+        <NodeLayout
+          Size="236.5,42"
+          Id="Package\EXTRACT and STAGE SQL AGENT tables\EXTRACT and STAGE sysjobsteps"
+          TopLeft="298,90" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\EXTRACT and STAGE SQL AGENT tables\TRUNCATE stagin sysjobsteps"
+          TopLeft="309.5,15.5" />
         <NodeLayout
           Size="206,42"
           Id="Package\EXTRACT and STAGE SQL AGENT tables\TRUNCATE staging sysjobs"
@@ -2122,7 +2126,7 @@ FROM msdb.dbo.sysjobs</property>
           TopLeft="146.958329266972,59">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,30.153335190243"
               Start="0,0"
               End="0,22.653335190243">
@@ -2139,20 +2143,12 @@ FROM msdb.dbo.sysjobs</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="220,42"
-          Id="Package\EXTRACT and STAGE SQL AGENT tables\TRUNCATE stagin sysjobsteps"
-          TopLeft="309.5,15.5" />
-        <NodeLayout
-          Size="236.5,42"
-          Id="Package\EXTRACT and STAGE SQL AGENT tables\EXTRACT and STAGE sysjobsteps"
-          TopLeft="298,90" />
         <EdgeLayout
           Id="Package\EXTRACT and STAGE SQL AGENT tables.PrecedenceConstraints[Constraint 1]"
           TopLeft="417.875,57.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,32.5"
               Start="0,0"
               End="0,25">
@@ -2176,20 +2172,24 @@ FROM msdb.dbo.sysjobs</property>
           Size="562.5,228.5"
           Id="Package\EXTRACT and STAGE SQL AGENT tables"
           TopLeft="259.5,212" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\GET ETL DIMENSION LOG"
+          TopLeft="445.666657103433,85.66666776869" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="541.333328551716,131.66666776869">
+          TopLeft="543.958328551716,127.66666776869">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
-              EndConnector="0,80.33333223131"
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84.33333223131"
               Start="0,0"
-              End="0,72.83333223131">
+              End="0,76.83333223131">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.83333223131" />
+                    End="0,76.83333223131" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
