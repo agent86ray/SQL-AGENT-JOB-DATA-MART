@@ -64,6 +64,7 @@
     <Folder Include="dbo\Sequences" />
     <Folder Include="dbo\Tables" />
     <Folder Include="staging\Stored Procedures" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\staging.sql" />
@@ -91,5 +92,12 @@
     <Build Include="dbo\Stored Procedures\UPDATE_JOB_STEP_INSTANCE.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_JOB_CURRENT.sql" />
     <Build Include="dbo\Tables\JOB_CURRENT.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_JOB_INSTANCE_ALL_STEPS_COMPLETED.sql" />
+    <Build Include="dbo\Tables\JOB_INSTANCE_ALL_STEPS_COMPLETED.sql" />
+    <Build Include="dbo\Stored Procedures\CLOSE_ETL_DIMENSION_LOG.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\DIMENSION queries.sql" />
+    <None Include="Scripts\HISTORY queries.sql" />
   </ItemGroup>
 </Project>

@@ -36,6 +36,7 @@
           <SSIS:Package SSIS:Name="INCREMENTAL-LOAD-JOB-INSTANCE.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="INCREMENTAL-LOAD-JOB-STEP-INSTANCE.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="BEGIN-ETL_DIMENSION_JOB.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="END_ETL_DIMENSION_LOG.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="msdb.conmgr" />
@@ -257,10 +258,10 @@
                 <SSIS:Property SSIS:Name="Name">STAGE-SQL-AGENT-Dimensions</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">20</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4AC7A47D-BE13-457F-BB34-CF23A3B98BD1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FCE17406-34A1-400B-AA17-4BBA1B5EE8E5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -363,6 +364,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{352B3C1F-0200-4DE1-93FD-3C9A95A96F34}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="END_ETL_DIMENSION_LOG.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D8FF1CE8-B6D7-436D-B9D7-02C51571E2AA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">END_ETL_DIMENSION_LOG</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3AA8B82E-8BDD-43C2-BB1F-DCBCAB544D83}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
