@@ -42,5 +42,23 @@ BEGIN
 	LEFT JOIN [dbo].[JOB_CURRENT] c
 	ON c.[JOB_KEY] = j.[JOB_KEY]
 	WHERE c.[JOB_KEY] IS NULL;
+
+	-- remove rows that are no longer current
+	;WITH CTE_JOBS AS (
+		SELECT
+			[JOB_KEY]
+		,	[job_id]
+		,	ROW_NUMBER() OVER (
+				PARTITION BY [job_id]
+				ORDER BY [job_id], [JOB_KEY] DESC
+			) AS [ROW_NUMBER]
+		FROM [dbo].[JOB_CURRENT]
+	)
+
+	DELETE c
+	FROM [dbo].[JOB_CURRENT] c
+	JOIN CTE_JOBS x
+	ON x.[JOB_KEY] = c.[JOB_KEY]
+	WHERE x.[ROW_NUMBER] > 1;
 END
 
