@@ -17,17 +17,30 @@ BEGIN
 			) AS [ROW_NUMBER]
 		FROM [dbo].[sysjobs]
 	)
+	, CTE_JOB_STEP_COUNT AS (
+		SELECT
+			s.[JOB_KEY]
+		,	COUNT(*)	AS [JOB_STEP_COUNT]
+		FROM [dbo].[sysjobsteps] s
+		JOIN CTE_CURRENT_JOB c
+		ON c.[JOB_KEY] = s.[JOB_KEY]
+		GROUP BY s.[JOB_KEY]
+	)
 
 	INSERT [dbo].[JOB_CURRENT] (
 		[JOB_KEY]
 	,	[job_id]
+	,	[JOB_STEP_COUNT]
 	)
 	SELECT
-		s.[JOB_KEY]
-	,	s.[job_id]
-	FROM  CTE_CURRENT_JOB s
+		j.[JOB_KEY]
+	,	j.[job_id]
+	,	ISNULL(n.[JOB_STEP_COUNT], 0)
+	FROM  CTE_CURRENT_JOB j
+	LEFT JOIN CTE_JOB_STEP_COUNT n
+	ON n.JOB_KEY = j.JOB_KEY
 	LEFT JOIN [dbo].[JOB_CURRENT] c
-	ON s.[JOB_KEY] = c.[JOB_KEY]
+	ON c.[JOB_KEY] = j.[JOB_KEY]
 	WHERE c.[JOB_KEY] IS NULL;
 END
 
