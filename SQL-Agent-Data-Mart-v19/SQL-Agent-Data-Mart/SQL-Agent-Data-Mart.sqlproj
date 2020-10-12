@@ -99,6 +99,10 @@
     <Build Include="dbo\Stored Procedures\CALCULATE_JOB_STEP_AVERAGE_DURATION.sql" />
     <Build Include="dbo\Tables\JOB_STEP_DURATION.sql" />
     <Build Include="dbo\Stored Procedures\ACCUMULATE_JOB_STEP_DURATION.sql" />
+    <Build Include="dbo\Sequences\REFRESH_KEY.sql" />
+    <Build Include="dbo\Tables\ACTIVE_JOBS.sql" />
+    <Build Include="dbo\Tables\ACTIVE_JOBS_REFRESH.sql" />
+    <Build Include="dbo\Stored Procedures\GET_ACTIVE_JOBS.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\DIMENSION queries.sql" />
