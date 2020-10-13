@@ -40,6 +40,7 @@
           <SSIS:Package SSIS:Name="UPDATE-JOB-INSTANCE-ALL-STEPS-COMPLETED.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="CALCULATE-JOB-STEP-AVERAGE-DURATION.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ACCUMULATE-JOB-STEP-DURATION.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="GET-ACTIVE-JOBS.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="msdb.conmgr" />
@@ -435,6 +436,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{2A5E9F55-FF2F-42F4-AC83-F7B25AAEC69F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="GET-ACTIVE-JOBS.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B22A0686-CFE1-4B52-B3BF-7F357EF07106}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">GET-ACTIVE-JOBS</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{ADFF3BD4-4C70-4E39-BCDF-7715327ACD3D}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
