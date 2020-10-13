@@ -38,6 +38,8 @@
           <SSIS:Package SSIS:Name="BEGIN-ETL_DIMENSION_JOB.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="END_ETL_DIMENSION_LOG.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="UPDATE-JOB-INSTANCE-ALL-STEPS-COMPLETED.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="CALCULATE-JOB-STEP-AVERAGE-DURATION.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ACCUMULATE-JOB-STEP-DURATION.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="msdb.conmgr" />
@@ -399,6 +401,40 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{D9C5CE61-4EA5-46C0-A256-17308E88DD54}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="CALCULATE-JOB-STEP-AVERAGE-DURATION.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C3A66A50-901D-49B0-873D-AF4BE01533E6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">CALCULATE-JOB-STEP-AVERAGE-DURATION</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{34BC3D8C-111D-44BF-BA5A-6EEC69561E92}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ACCUMULATE-JOB-STEP-DURATION.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{AB6DBFD7-6FC5-4F91-B3E6-47B9E9D3AB2A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ACCUMULATE-JOB-STEP-DURATION</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2A5E9F55-FF2F-42F4-AC83-F7B25AAEC69F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
