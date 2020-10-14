@@ -66,6 +66,7 @@
     <Folder Include="staging\Stored Procedures" />
     <Folder Include="Scripts" />
     <Folder Include="dbo\Views" />
+    <Folder Include="staging\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\staging.sql" />
@@ -105,9 +106,14 @@
     <Build Include="dbo\Tables\ACTIVE_JOBS_REFRESH.sql" />
     <Build Include="dbo\Stored Procedures\GET_ACTIVE_JOBS.sql" />
     <Build Include="dbo\Views\vACTIVE_JOBS.sql" />
+    <Build Include="dbo\Views\vJOB_CURRENT.sql" />
+    <Build Include="staging\Views\vsysjobhistory.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\DIMENSION queries.sql" />
     <None Include="Scripts\HISTORY queries.sql" />
+    <None Include="Scripts\SQL AGENT DATA MART JOB DEMO.sql" />
+    <None Include="Scripts\CLEAR SQL AGENT DIMENSIONS.sql" />
+    <None Include="Scripts\CLEAR HISTORY.sql" />
   </ItemGroup>
 </Project>
