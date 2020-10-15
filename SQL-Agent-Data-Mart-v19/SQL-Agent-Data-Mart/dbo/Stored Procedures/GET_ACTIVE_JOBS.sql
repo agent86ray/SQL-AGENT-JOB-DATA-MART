@@ -56,7 +56,7 @@ BEGIN
 		@REFRESH_KEY
 	,	a.[job_id]	
 	,	DATEDIFF(second, a.[start_execution_date], GETDATE())	AS [current_duration]
-	,	j.[TOTAL_STEP_COUNT]
+	,	0	-- TO DO: get the number of times the job has run?
 	,	d.[job_step_average_duration]	-- based on last step executed
 	,	CONVERT(
 			SMALLDATETIME
@@ -69,9 +69,7 @@ BEGIN
 		) AS [estimated_completion]
 	FROM CTE_JOBS_RUNNING a
 	LEFT JOIN CTE_JOB_STEPS_REMAINING_DURATION d
-	ON d.[JOB_KEY] = a.[JOB_KEY]
-	LEFT JOIN [dbo].[JOB_STEP_AVERAGE_DURATION] j
-	ON j.[JOB_KEY] = a.[JOB_KEY];
+	ON d.[JOB_KEY] = a.[JOB_KEY];
 
 	INSERT [dbo].[ACTIVE_JOBS_REFRESH] (
 		[REFRESH_KEY]
