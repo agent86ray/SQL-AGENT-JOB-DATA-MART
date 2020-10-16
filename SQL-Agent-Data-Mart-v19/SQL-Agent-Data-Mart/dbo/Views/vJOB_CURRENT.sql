@@ -8,4 +8,7 @@ AS
 	,	j.date_modified
 	FROM [dbo].[JOB_CURRENT] c
 	JOIN [dbo].[sysjobs] j
-	ON j.[JOB_KEY] = c.[JOB_KEY];
+	ON j.[JOB_KEY] = c.[JOB_KEY]
+	LEFT JOIN [dbo].[JOB_EXCLUDE] x
+	ON x.[job_id] = j.[job_id]
+	WHERE x.[name] IS NULL;
