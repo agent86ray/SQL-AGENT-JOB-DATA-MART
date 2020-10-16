@@ -4,9 +4,12 @@
 USE [SQL_AGENT_DATA_MART];
 GO
 
--- query SQL AGENT DIMENSIONS
+--
+-- queries for the the PROCESS SQL AGENT DATA MART DIMENSIONS job
+--
 
--- query LOG
+-- query LOG; records each time the job ran
+-- ETL_KEY value stored in the various tables
 SELECT TOP 5
 	[ETL_KEY]
 ,	[START_DATE]

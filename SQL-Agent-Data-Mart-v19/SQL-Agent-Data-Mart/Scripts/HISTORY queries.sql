@@ -4,14 +4,23 @@ USE [SQL_AGENT_DATA_MART];
 GO
 
 
+--
 -- queries for PROCESS SQL AGENT DATA MART HISTORY job
+--
 
 
 -- View the log for today
+-- Incremental update based on BEGIN_INSTANCE_ID and END_INSTANCE_ID
 DECLARE @TODAY DATETIME = CONVERT(DATE, GETDATE());
-SELECT *
+SELECT 
+	[ETL_KEY]
+,	[START_DATE]
+,	[END_DATE]
+,	[BEGIN_INSTANCE_ID]
+,	END_INSTANCE_ID
 FROM [dbo].[ETL_HISTORY_LOG]
-WHERE [START_DATE] > @TODAY;
+WHERE [START_DATE] > @TODAY
+ORDER BY [START_DATE] DESC;
 
 
 -- View the rows extracted from msdb.dbo.sysjobhistory.
@@ -54,7 +63,9 @@ FROM [dbo].[JOB_STEP_INSTANCE];
 
 
 SELECT *
-FROM [dbo].[vJOB_CURRENT];
+FROM [dbo].[vJOB_CURRENT]
+ORDER BY [name];
+
 
 SELECT *
 FROM  [dbo].[JOB_STEP_AVERAGE_DURATION]
