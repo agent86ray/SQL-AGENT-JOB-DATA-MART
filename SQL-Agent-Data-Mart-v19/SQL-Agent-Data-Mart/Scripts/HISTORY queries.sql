@@ -57,6 +57,11 @@ SELECT *
 FROM [dbo].[vJOB_CURRENT];
 
 SELECT *
+FROM  [dbo].[JOB_STEP_AVERAGE_DURATION]
+WHERE [JOB_KEY] = 160;
+
+
+SELECT *
 FROM [dbo].[JOB_CURRENT] c
 JOIN [dbo].[sysjobs] j ON j.[JOB_KEY] = c.[JOB];
 
