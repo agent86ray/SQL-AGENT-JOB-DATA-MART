@@ -61,9 +61,12 @@ BEGIN
 	ON c.[job_id] = h.[job_id]
 	JOIN [dbo].[JOB_INSTANCE] j
 	ON j.[JOB_KEY] = c.[JOB_KEY]
+	LEFT JOIN [dbo].[JOB_EXCLUDE] x
+	ON x.[job_id] = h.[job_id]
 		-- only get job step outcome rows
 	WHERE h.[step_id] > 0			
 		-- get JOB_INSTANCE based on range of start_time and end_time
-	AND h.[start_time] BETWEEN j.[start_time] AND j.[end_time];				
+	AND h.[start_time] BETWEEN j.[start_time] AND j.[end_time]
+	AND x.[name] IS NULL;				
 END
 

@@ -1,0 +1,19 @@
+﻿/*
+
+	ACTIVITY queries
+
+
+USE [SQL_AGENT_DATA_MART]
+GO
+
+
+SELECT TOP 1 *
+FROM [dbo].[ACTIVE_JOBS_REFRESH] 
+ORDER BY [REFRESH_DATE] DESC;
+
+
+SELECT *
+FROM [dbo].[vACTIVE_JOBS];
+
+
+*/

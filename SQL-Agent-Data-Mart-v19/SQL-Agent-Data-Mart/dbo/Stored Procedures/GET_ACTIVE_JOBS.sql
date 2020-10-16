@@ -18,11 +18,14 @@ BEGIN
 		,	a.[last_executed_step_id]
 		,	a.[last_executed_step_date]
 		FROM msdb.dbo.sysjobactivity a
+		LEFT JOIN [dbo].[JOB_EXCLUDE] x
+		ON x.[job_id] = a.[job_id]
 		LEFT JOIN [dbo].[JOB_CURRENT] c
 		ON c.[job_id] = a.[job_id]
 		WHERE a.session_id = @SESSION_ID
 		AND a.start_execution_date IS NOT NULL
 		AND stop_execution_date IS NULL
+		AND x.[name] IS NULL
 	)
 
 	--

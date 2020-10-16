@@ -8,26 +8,7 @@ BEGIN
 
 	TRUNCATE TABLE [staging].[sysjobs_UPDATE];
 
-	;WITH CTE_sysjobs_DIMENSIONS AS (
-		SELECT
-			[JOB_KEY]
-		,	[job_id]
-		,	[date_modified]
-		,	ROW_NUMBER() OVER (
-				PARTITION BY [job_id], [date_modified]
-				ORDER BY [job_id], [date_modified] DESC
-			) AS [ROW_NUMBER]
-		FROM [dbo].[sysjobs]
-	)
-	, CTE_CURRENT_sysjobs_DIMENSION AS (
-		SELECT
-			[JOB_KEY]
-		,	[job_id]
-		,	[date_modified]
-		FROM CTE_sysjobs_DIMENSIONS
-		WHERE [ROW_NUMBER] = 1
-	)
-	, CTE_sysjobs AS (
+	;WITH CTE_sysjobs AS (
 		SELECT
 			s.[ETL_KEY]
 		,	s.[STAGING_KEY]
@@ -38,8 +19,12 @@ BEGIN
 		,	d.[JOB_KEY]
 		,	s.[job_id]
 		FROM [staging].[sysjobs] s
-		LEFT JOIN CTE_CURRENT_sysjobs_DIMENSION d
+		LEFT JOIN[dbo].[vJOB_CURRENT] d
 		ON d.[job_id] = s.[job_id]
+		-- EXCLUDE jobs
+		LEFT JOIN [dbo].[JOB_EXCLUDE] x
+		ON x.[job_id] = s.[job_id]
+		WHERE x.[name] IS NULL
 	)
 
 	INSERT [staging].[sysjobs_UPDATE] (

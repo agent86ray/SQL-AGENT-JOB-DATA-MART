@@ -14,6 +14,10 @@ ORDER BY [JOB_KEY];
 
 
 SELECT *
+FROM [staging].[sysjobs];
+
+
+SELECT *
 FROM msdb.dbo.sysjobactivity
 WHERE ;
 
@@ -26,9 +30,19 @@ SELECT TOP 1 *
 FROM [dbo].[sysjobs];
 
 
+SELECT *
+FROM [staging].[sysjobs_UPDATE]
+
+SELECT j.[name], u.*
+FROM [staging].[sysjobs_UPDATE] u
+JOIN [dbo].[sysjobs] j
+ON j.[JOB_KEY] = u.[NEW_JOB_KEY]
+
+EXEC [staging].[STAGE_sysjobs_UPDATE];
 
 
-
+SELECT *
+FROM [staging].[sysjobs_UPDATE]
 
 
 */
