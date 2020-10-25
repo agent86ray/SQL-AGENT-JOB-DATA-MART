@@ -3,12 +3,18 @@ AS
 BEGIN
 	/*
 
-		sysjobs and sysjobsteps are being handled as type 2 slowly changing dimensions.
+		This procedure is no longer used. It has been split into 2 procedures:
+		UPDATE_sysjobs and UPDATE_sysjobsteps.
 
-		For sysjobs whether an Insert or Update we insert a new row from staging. For sysjobsteps insert
-		every row from staging.
 	*/
-
+	
+	RAISERROR (
+		N'THe stored procedure UPDATE_sysjobs_AND_sysjobsteps is DEPRECATED'
+	,   10
+	,	1
+	);
+	
+	/*
 	-- INSERT new rows into sysjobs whether we determined an INSERT or an UPDATE
 	INSERT [dbo].[sysjobs] (
 	  [JOB_KEY]
@@ -126,4 +132,5 @@ BEGIN
 	FROM [staging].[sysjobs_UPDATE] u
 	JOIN [staging].[sysjobsteps] s
 	ON s.[job_id] = u.[job_id];
+*/
 END
