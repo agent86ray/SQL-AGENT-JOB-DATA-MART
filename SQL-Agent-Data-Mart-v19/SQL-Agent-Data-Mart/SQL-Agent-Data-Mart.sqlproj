@@ -111,6 +111,7 @@
     <Build Include="dbo\Tables\JOB_EXCLUDE.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_sysjobs.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_sysjobsteps.sql" />
+    <Build Include="dbo\Stored Procedures\CLOSE_ETL_HISTORY_LOG.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\DIMENSION queries.sql" />

@@ -9,27 +9,40 @@ GO
 --
 
 
--- View the log for today
+-- View the results from the latest run
 -- Incremental update based on BEGIN_INSTANCE_ID and END_INSTANCE_ID
-DECLARE @TODAY DATETIME = CONVERT(DATE, GETDATE());
-SELECT 
+SELECT TOP 1
 	[ETL_KEY]
 ,	[START_DATE]
 ,	[END_DATE]
 ,	[BEGIN_INSTANCE_ID]
 ,	END_INSTANCE_ID
 FROM [dbo].[ETL_HISTORY_LOG]
-WHERE [START_DATE] > @TODAY
-ORDER BY [START_DATE] DESC;
+ORDER BY [ETL_KEY] DESC;
+
+
+--SELECT *
+--FROM [staging].[sysjobhistory];
 
 
 -- View the rows extracted from msdb.dbo.sysjobhistory.
 -- Filter out the SQL AGENT DATA MART jobs. We don't want
 -- to see them.
-SELECT *
-FROM [staging].[vsysjobhistory] 
-ORDER BY [instance_id];
+SELECT 
+	h.*
+,	d.*
+FROM [staging].[vsysjobhistory] h
+JOIN [dbo].[JOB_STEP_AVERAGE_DURATION] d
+ON d.[JOB_KEY] = h.[JOB_KEY] AND d.[step_id] = h.[step_id]
+ORDER BY h.[instance_id], h.[JOB_KEY], h.[step_id];
 GO
+
+-----------------------------------------------------------
+
+
+SELECT *
+FROM  [dbo].[JOB_STEP_AVERAGE_DURATION]
+WHERE [JOB_KEY] BETWEEN 181 AND 182;
 
 
 -- Show JOB_INSTANCE and JOB_STEP_INSTANCE -----------------------------

@@ -41,6 +41,7 @@
           <SSIS:Package SSIS:Name="CALCULATE-JOB-STEP-AVERAGE-DURATION.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ACCUMULATE-JOB-STEP-DURATION.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="GET-ACTIVE-JOBS.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="END_ETL_HISTORY_LOG.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="msdb.conmgr" />
@@ -453,6 +454,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{ADFF3BD4-4C70-4E39-BCDF-7715327ACD3D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="END_ETL_HISTORY_LOG.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B345C94A-DF61-4644-BB7F-B4872D0539E2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">END_ETL_HISTORY_LOG</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7A1E6B3F-F2D6-45AF-A11B-A90F99B3BC91}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
