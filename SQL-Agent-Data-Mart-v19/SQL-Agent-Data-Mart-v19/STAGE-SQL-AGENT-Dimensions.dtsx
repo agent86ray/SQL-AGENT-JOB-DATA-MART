@@ -12,8 +12,8 @@
   DTS:ObjectName="STAGE-SQL-AGENT-Dimensions"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{F0556163-1946-45A8-9B21-019CF55F4566}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{CDE7038C-9DD2-42A4-8869-B1C5095F0218}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2013,7 +2013,7 @@ FROM msdb.dbo.sysjobs</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE staging sysjobs"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2030,7 +2030,7 @@ FROM msdb.dbo.sysjobs</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="TRUNCATE staging sysjobsteps"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2059,13 +2059,13 @@ FROM msdb.dbo.sysjobs</property>
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\GET ETL DIMENSION LOG"
+      DTS:refId="Package\GET JOB STATE"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{01CF5D4A-EAC8-4ECE-BA37-5C9C922AA9D6}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="GET ETL DIMENSION LOG"
+      DTS:ObjectName="GET JOB STATE"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server vNext CTP1.9; © 2018 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -2088,7 +2088,7 @@ FROM msdb.dbo.sysjobs</property>
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{33D8FE08-9E77-4993-A622-0493904B9C81}"
-      DTS:From="Package\GET ETL DIMENSION LOG"
+      DTS:From="Package\GET JOB STATE"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\EXTRACT and STAGE SQL AGENT tables" />
@@ -2114,13 +2114,13 @@ FROM msdb.dbo.sysjobs</property>
           Id="Package\EXTRACT and STAGE SQL AGENT tables\EXTRACT and STAGE sysjobsteps"
           TopLeft="298,90" />
         <NodeLayout
-          Size="226,42"
-          Id="Package\EXTRACT and STAGE SQL AGENT tables\TRUNCATE staging sysjobsteps"
-          TopLeft="309.5,15.5" />
-        <NodeLayout
           Size="206,42"
           Id="Package\EXTRACT and STAGE SQL AGENT tables\TRUNCATE staging sysjobs"
           TopLeft="41,17" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\EXTRACT and STAGE SQL AGENT tables\TRUNCATE staging sysjobsteps"
+          TopLeft="309.5,15.5" />
         <EdgeLayout
           Id="Package\EXTRACT and STAGE SQL AGENT tables.PrecedenceConstraints[Constraint]"
           TopLeft="146.958329266972,59">
@@ -2173,23 +2173,23 @@ FROM msdb.dbo.sysjobs</property>
           Id="Package\EXTRACT and STAGE SQL AGENT tables"
           TopLeft="259.5,212" />
         <NodeLayout
-          Size="203,42"
-          Id="Package\GET ETL DIMENSION LOG"
-          TopLeft="445.666657103433,85.66666776869" />
+          Size="154,42"
+          Id="Package\GET JOB STATE"
+          TopLeft="463.166657103433,84.66666776869" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="543.958328551716,127.66666776869">
+          TopLeft="540.458328551716,126.66666776869">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,84.33333223131"
+              EndConnector="0,85.33333223131"
               Start="0,0"
-              End="0,76.83333223131">
+              End="0,77.83333223131">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.83333223131" />
+                    End="0,77.83333223131" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

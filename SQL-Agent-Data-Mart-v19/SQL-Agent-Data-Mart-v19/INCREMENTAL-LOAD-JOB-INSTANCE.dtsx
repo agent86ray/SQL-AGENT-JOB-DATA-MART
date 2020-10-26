@@ -12,8 +12,8 @@
   DTS:ObjectName="INCREMENTAL-LOAD-JOB-INSTANCE"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{15A19D62-EED5-48C8-9178-6CCDEE26B591}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{8CE6F7C1-C34D-493B-8426-F2738AEE8A18}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -47,13 +47,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\GET ETL HISTORY LOG"
+      DTS:refId="Package\GET JOB STATE"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{5ac5d573-399f-41e3-987e-1bf7b3a27151}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="GET ETL HISTORY LOG"
+      DTS:ObjectName="GET JOB STATE"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -105,7 +105,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{E3E1765D-9A95-4F37-8B55-5D11A9445031}"
-      DTS:From="Package\GET ETL HISTORY LOG"
+      DTS:From="Package\GET JOB STATE"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\UPDATE JOB_INSTANCE" />
@@ -121,36 +121,29 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="189.5,42"
-          Id="Package\GET ETL HISTORY LOG"
-          TopLeft="397,108.5" />
-        <AnnotationLayout
-          Text="ASSUMPTION: sysjobs and sysjobsteps Dimensions&#xD;&#xA;are processed timely so there are noearly arriving facts. &#xD;&#xA;&#xD;&#xA;Add check for inserting duplicates."
-          ParentId="Package"
-          FontInfo="{assembly:Null}"
-          Size="323.5,88"
-          Id="5ab26122-1c72-4958-bf66-bc1cbf60c2c9"
-          TopLeft="93,29.5" />
+          Size="154,42"
+          Id="Package\GET JOB STATE"
+          TopLeft="407,108" />
         <NodeLayout
           Size="194.5,42"
           Id="Package\UPDATE JOB_INSTANCE"
           TopLeft="393,211" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="491,150.5">
+          TopLeft="487.125,150">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.5"
+              EndConnector="0,61"
               Start="0,0"
-              End="0,53">
+              End="0,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53" />
+                    End="0,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -159,6 +152,13 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="ASSUMPTION: sysjobs and sysjobsteps Dimensions&#xA;are processed timely so there are noearly arriving facts. &#xA;&#xA;Add check for inserting duplicates."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="323.5,88"
+          Id="5ab26122-1c72-4958-bf66-bc1cbf60c2c9"
+          TopLeft="93,29.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

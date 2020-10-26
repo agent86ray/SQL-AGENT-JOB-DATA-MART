@@ -12,8 +12,8 @@
   DTS:ObjectName="UPDATE-JOB-INSTANCE-ALL-STEPS-COMPLETED"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{D9C5CE61-4EA5-46C0-A256-17308E88DD54}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{36A8A10A-CE9C-4048-B7E6-C96D5ED0F53C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -47,13 +47,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\GET ETL HISTORY LOG"
+      DTS:refId="Package\GET JOB STATE"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{77ef0ad5-e100-4f1a-b1d1-1921c4676b52}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="GET ETL HISTORY LOG"
+      DTS:ObjectName="GET JOB STATE"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -118,7 +118,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{FBC65329-6F97-473D-A093-6A7F045C0B01}"
-      DTS:From="Package\GET ETL HISTORY LOG"
+      DTS:From="Package\GET JOB STATE"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\UPDATE JOB INSTANCE ALL STEPS COMPLETED" />
@@ -136,27 +136,27 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="189.5,42"
-          Id="Package\GET ETL HISTORY LOG"
-          TopLeft="366.5,121" />
+          Size="154,42"
+          Id="Package\GET JOB STATE"
+          TopLeft="384,119" />
         <NodeLayout
           Size="307.5,42"
           Id="Package\UPDATE JOB INSTANCE ALL STEPS COMPLETED"
           TopLeft="315,220" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="465,163">
+          TopLeft="464.875,161">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57"
+              EndConnector="0,59"
               Start="0,0"
-              End="0,49.5">
+              End="0,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.5" />
+                    End="0,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
