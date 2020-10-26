@@ -57,5 +57,8 @@ BEGIN
 	FROM [staging].[sysjobhistory] h
 	JOIN [dbo].[JOB_CURRENT] c
 	ON c.[job_id] = h.[job_id]
-	WHERE h.[step_id] = 0;				-- only get job outcome rows
+	LEFT JOIN [dbo].[JOB_EXCLUDE] x
+	ON x.[job_id] = h.[job_id]
+	WHERE h.[step_id] = 0				-- only get job outcome rows
+	AND x.[name] IS NULL;
 END
