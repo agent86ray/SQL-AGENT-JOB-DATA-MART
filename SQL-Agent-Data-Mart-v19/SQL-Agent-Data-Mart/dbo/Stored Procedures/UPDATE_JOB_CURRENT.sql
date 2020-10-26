@@ -7,15 +7,22 @@ BEGIN
 
 	*/
 	-- Get the "current" row for each job
-	;WITH CTE_CURRENT_JOB AS (
+	;WITH CTE_JOB_VERSION AS (
 		SELECT
 			[JOB_KEY]
 		,	[job_id]
 		,	ROW_NUMBER() OVER (
-				PARTITION BY [job_id], [date_modified]
+				PARTITION BY [job_id]
 				ORDER BY [job_id], [date_modified] DESC
 			) AS [ROW_NUMBER]
 		FROM [dbo].[sysjobs]
+	)
+	, CTE_CURRENT_JOB AS (
+		SELECT
+			[JOB_KEY]
+		,	[job_id]
+		FROM CTE_JOB_VERSION
+		WHERE [ROW_NUMBER] = 1
 	)
 	, CTE_JOB_STEP_COUNT AS (
 		SELECT
@@ -44,7 +51,7 @@ BEGIN
 	WHERE c.[JOB_KEY] IS NULL;
 
 	-- remove rows that are no longer current
-	;WITH CTE_JOBS AS (
+	;WITH CTE_OLD_JOBS AS (
 		SELECT
 			[JOB_KEY]
 		,	[job_id]
@@ -57,7 +64,7 @@ BEGIN
 
 	DELETE c
 	FROM [dbo].[JOB_CURRENT] c
-	JOIN CTE_JOBS x
+	JOIN CTE_OLD_JOBS x
 	ON x.[JOB_KEY] = c.[JOB_KEY]
 	WHERE x.[ROW_NUMBER] > 1;
 END
