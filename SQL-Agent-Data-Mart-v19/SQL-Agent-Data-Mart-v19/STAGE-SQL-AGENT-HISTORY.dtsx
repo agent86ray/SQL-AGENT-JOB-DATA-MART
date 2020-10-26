@@ -12,8 +12,8 @@
   DTS:ObjectName="STAGE-SQL-AGENT-HISTORY"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{9BB9F833-27E3-4FF1-B65C-57424B092713}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{E1D6C2E0-4451-4A78-B8AD-6A2A46E6EFC1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -991,13 +991,13 @@ AND [run_status] = 1;</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\STARTUP\TRUNCATE staging sysjobhostory"
+          DTS:refId="Package\STARTUP\TRUNCATE staging sysjobhistory"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{751FA90C-A3CB-439A-A459-62C2248C3071}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="TRUNCATE staging sysjobhostory"
+          DTS:ObjectName="TRUNCATE staging sysjobhistory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="1">
           <DTS:Variables />
@@ -1048,8 +1048,8 @@ AND [run_status] = 1;</property>
           Id="Package\STARTUP\GET JOB STATE"
           TopLeft="51,16.5" />
         <NodeLayout
-          Size="236.5,42"
-          Id="Package\STARTUP\TRUNCATE staging sysjobhostory"
+          Size="233,42"
+          Id="Package\STARTUP\TRUNCATE staging sysjobhistory"
           TopLeft="317.5,17" />
         <ContainerLayout
           HeaderHeight="43"
