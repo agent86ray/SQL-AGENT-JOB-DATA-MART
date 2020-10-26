@@ -2,9 +2,21 @@
 AS
 BEGIN
 	DECLARE 
-		@SESSION_ID				INT
+		@SQL_AGENT_IS_RUNNING	SMALLINT
+	,	@SESSION_ID				INT
 	,	@REFRESH_KEY			INT = NEXT VALUE FOR [dbo].[REFRESH_KEY]
 	,	@REFRESH_DATE			SMALLDATETIME = CONVERT(SMALLDATETIME, GETDATE());
+
+	SELECT 
+		@SQL_AGENT_IS_RUNNING = IIF([status_desc] = 'Running', 1, 0)
+	FROM sys.dm_server_services
+	WHERE LEFT([servicename], 16) = 'SQL Server Agent';
+
+	IF @SQL_AGENT_IS_RUNNING = 0
+	BEGIN
+		RAISERROR('The SQL Agent Service is not running.', 11, 1);
+		RETURN;
+	END
 
 	SELECT
 		@SESSION_ID = MAX(session_id)
