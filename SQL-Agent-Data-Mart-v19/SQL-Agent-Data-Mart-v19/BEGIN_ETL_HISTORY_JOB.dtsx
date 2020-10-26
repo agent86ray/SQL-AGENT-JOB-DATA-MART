@@ -12,8 +12,8 @@
   DTS:ObjectName="BEGIN_ETL_HISTORY_JOB"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{1618DAE4-2F0D-4D4C-A659-B70EABA13881}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{111FDB12-97CA-4609-915C-5B255C5DBA2D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -29,13 +29,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\CREATE ETL HISTORY LOG"
+      DTS:refId="Package\CREATE JOB STATE"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{09D28D53-5272-460B-B7C7-34478AD143C0}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="CREATE ETL HISTORY LOG"
+      DTS:ObjectName="CREATE JOB STATE"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -66,8 +66,8 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="208,42"
-          Id="Package\CREATE ETL HISTORY LOG"
+          Size="172.5,42"
+          Id="Package\CREATE JOB STATE"
           TopLeft="338.5,88" />
       </GraphLayout>
     </LayoutInfo>
