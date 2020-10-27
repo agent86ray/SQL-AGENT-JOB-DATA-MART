@@ -1,9 +1,16 @@
 ﻿CREATE PROCEDURE [dbo].[SimulateJobStepDuration]
 	@MINIMUM_MINUTES	INT = 1
 ,	@MAXIMUM_MINUTES	INT = 10
+,	@RAISE_ERROR		BIT = 0
 ,	@DEBUG				BIT = 0
 AS
 BEGIN
+	IF @RAISE_ERROR = 1
+	BEGIN
+		RAISERROR(N'ERROR OCCURRED IN SimulateJobStepDuration', 11, 1);
+		RETURN;
+	END
+
 	-- convert to range of seconds
 	DECLARE
 	 	@MINIMUM_SECONDS		INT = @MINIMUM_MINUTES * 60
