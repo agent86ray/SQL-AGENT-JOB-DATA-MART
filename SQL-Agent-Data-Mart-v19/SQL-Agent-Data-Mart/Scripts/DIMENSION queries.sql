@@ -10,7 +10,7 @@ GO
 
 -- query LOG; records each time the job ran
 -- ETL_KEY value stored in the various tables
-SELECT TOP 5
+SELECT TOP 1
 	[ETL_KEY]
 ,	[START_DATE]
 ,	[END_DATE]
