@@ -18,35 +18,44 @@ BEGIN
 		skew the average duration calculation.
 
 	*/
-	-- Get every step completed for the job instance; using count(*) rather than distinct
-	;WITH CTE_JOB_STEPS_COMPLETED AS (
+
+	-- Get the count job steps completed
+	; WITH CTE_JOB_STEPS_COMPLETED AS (
 		SELECT
-			[JOB_KEY]
-		,	[JOB_INSTANCE_ID]
-		,	[step_id]	-- Use step_uid from sysjobsteps?
-		,	COUNT(*)	AS [JOB_STEP_COMPLETED_COUNT]
-		FROM [dbo].[JOB_STEP_INSTANCE]
+		 	[JOB_INSTANCE_ID]
+		,	[JOB_KEY]
+		,	COUNT(*)	AS [STEPS_COMPLETED]
+		FROM [dbo].[JOB_STEP_INSTANCE] j
 		WHERE [JOB_INSTANCE_ID] BETWEEN @BEGIN_JOB_INSTANCE AND @END_JOB_INSTANCE
-		GROUP BY [JOB_KEY], [JOB_INSTANCE_ID], [step_id]
+		GROUP BY [JOB_INSTANCE_ID], [JOB_KEY] 	
 	)
+
+	, CTE_DISTINCT_JOBS AS (
+		SELECT DISTINCT
+			[JOB_KEY]
+		FROM CTE_JOB_STEPS_COMPLETED 
+	)
+
+	-- Get the count of job steps for these jobs
 	, CTE_JOB_STEPS_COUNT AS (
 		SELECT
-			[JOB_KEY]
-		,	[JOB_INSTANCE_ID]
-		,	COUNT(*)	AS [JOB_STEP_COMPLETED_COUNT]
-		FROM CTE_JOB_STEPS_COMPLETED
-		GROUP BY [JOB_KEY], [JOB_INSTANCE_ID]
+			s.[JOB_KEY]
+		,	COUNT(*)	AS [STEP_COUNT]
+		FROM [dbo].[sysjobsteps] s
+		JOIN CTE_DISTINCT_JOBS j 
+		ON j.[JOB_KEY] = s.[JOB_KEY]
+		GROUP BY s.[JOB_KEY]
 	)
 
 	INSERT [dbo].[JOB_INSTANCE_ALL_STEPS_COMPLETED] (
 		[JOB_KEY]
 	,	[INSTANCE_ID]
-	)
+	)	
 	SELECT
-		s.[JOB_KEY]
-	,	s.[JOB_INSTANCE_ID]
-	FROM  CTE_JOB_STEPS_COUNT s
-	JOIN [dbo].[JOB_CURRENT] c
-	ON c.[JOB_KEY] = s.[JOB_KEY]
-	WHERE c.[JOB_STEP_COUNT] = s.[JOB_STEP_COMPLETED_COUNT];
+	 	c.[JOB_KEY]
+	,	c.[JOB_INSTANCE_ID]
+	FROM CTE_JOB_STEPS_COMPLETED c
+	JOIN CTE_JOB_STEPS_COUNT s
+	ON s.[JOB_KEY] = c.[JOB_KEY]
+	WHERE c.[STEPS_COMPLETED] = s.[STEP_COUNT];
 END
