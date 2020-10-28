@@ -29,12 +29,17 @@ BEGIN
 		@BEGIN_INSTANCE_ID = MAX([INSTANCE_ID]) + 1
 	FROM [dbo].[JOB_INSTANCE];
 
+	IF @BEGIN_INSTANCE_ID IS NULL
+		SET @BEGIN_INSTANCE_ID = 0;
+
 	-- Get the ending instance_id for the msdb.dbo.sysjobhistory table
 	SELECT 
 		@END_INSTANCE_ID = MAX([instance_id])
 	FROM msdb.dbo.sysjobhistory
-	WHERE [step_id] = 0
-	AND [run_status] = 1;
+	WHERE [run_status] = 1;
+
+	IF @END_INSTANCE_ID IS NULL
+		SET @END_INSTANCE_ID = 0;
 
 	INSERT [dbo].[ETL_HISTORY_LOG] (
 		[BEGIN_INSTANCE_ID]
