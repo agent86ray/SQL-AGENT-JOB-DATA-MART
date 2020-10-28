@@ -6,8 +6,6 @@ BEGIN
 	/*
 		Accumulate the duration for jobs with a [JOB_INSTANCE_ID] in the range of @BEGIN_JOB_INSTANCE
 		and @END_JOB_INSTANCE.
-
-		Filter out any job instances where not all steps were completed.
 	*/
 
 	;WITH CTE_JOB_STEPS AS (
@@ -17,9 +15,7 @@ BEGIN
 		,	j.[step_id]
 		,	j.[duration_seconds]
 		FROM [dbo].[JOB_STEP_INSTANCE] j
-		JOIN [dbo].[JOB_INSTANCE_ALL_STEPS_COMPLETED] s
-		ON j.[JOB_KEY] = s.[JOB_KEY] AND j.[JOB_INSTANCE_ID] = s.INSTANCE_ID
-		WHERE [JOB_INSTANCE_ID] BETWEEN @BEGIN_JOB_INSTANCE AND @END_JOB_INSTANCE
+		WHERE j.[JOB_INSTANCE_ID] BETWEEN @BEGIN_JOB_INSTANCE AND @END_JOB_INSTANCE
 	)
 
 	, CTE_SUM_STEPS AS (
