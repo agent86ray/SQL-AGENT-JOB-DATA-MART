@@ -416,10 +416,10 @@
                 <SSIS:Property SSIS:Name="Name">CALCULATE-JOB-STEP-AVERAGE-DURATION</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{34BC3D8C-111D-44BF-BA5A-6EEC69561E92}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9F48C6D8-C5B1-4992-AA6C-16B2C0F447C3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -433,10 +433,10 @@
                 <SSIS:Property SSIS:Name="Name">ACCUMULATE-JOB-STEP-DURATION</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2A5E9F55-FF2F-42F4-AC83-F7B25AAEC69F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6A227D0E-4EC6-4E10-8713-CE00E18666D5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

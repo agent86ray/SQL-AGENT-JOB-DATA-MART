@@ -112,6 +112,7 @@
     <Build Include="dbo\Stored Procedures\UPDATE_sysjobs.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_sysjobsteps.sql" />
     <Build Include="dbo\Stored Procedures\CLOSE_ETL_HISTORY_LOG.sql" />
+    <Build Include="dbo\Tables\JOB_STEP_AVERAGE_DURATION_UPDATE.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\DIMENSION queries.sql" />
