@@ -1,0 +1,80 @@
+MISCELLANEOUS
+=============
+I used SQL Server 2019 Developer Edition to create the sample code.
+
+I used SQL Server Management Studio version 18.6
+
+
+TOP-LEVEL FOLDER
+================
+SQL-Agent-Data-Mart-v19.sln is the Visual Studio solution
+
+The solution includes:
+SQL-Agent-Data-Mart is the folder for the SQL Server Database project
+SQL-Agent-Data-Mart-v19 is the folder for the SSIS project
+
+I originally started using Visual Studio 2019 (the reason for the "v19" as part of the names) but I switched back to
+Visual Studio 2017 because it's more familiar.
+
+
+CREATE THE SQL_AGENT_DATA_MART database
+=======================================
+CREATE DATABASE [SQL_AGENT_DATA_MART]
+GO
+
+ALTER DATABASE [SQL_AGENT_DATA_MART]
+SET RECOVERY SIMPLE;
+GO
+
+
+DEPLOY the SQL objects to the database. Execute the script DEPLOY-SQL-AGENT-DATA-MART-OBJECTS.sql in the 
+SQL-Agent-Data-Mart\Scripts folder in SQL Server Management Studio.
+
+If you get the error message "SQLCMD mode must be enabled to successfully execute this script"
+go to the top-level menu in SQL Server Management Studio and select:
+
+Tools, Options, Query Execution, SQL Server, General and click the checkbox "By default, open new queries in
+SQLCMD Mode. Open the script to create the database objects again.
+
+
+
+
+SSIS PROJECT
+============
+Deploy the SSIS project to the Integration Services Catalog.
+
+I used the Path /SSISDB/SQL-AGENT-Data-Mart-ETL/SQL-Agent-Data-Mart-ETL.
+The SQL Agent job steps have this hard-coded in the @command parameter for the msdb.dbo.sp_add_jobstep stored procedure.
+
+
+ 
+
+SQL AGENT JOBS
+==============
+Execute the scripts in SQL Server Management Studio (SSMS) to create the SQL Agent jobs.
+
+I scripted the 3 SQL Agent jobs from my development laptop. The T-SQL scripts are in the SQL-Agent-Data-Mart\Scripts folder. The 
+script file names all begin with JOB - :
+
+JOB - PROCESS SQL AGENT DATA MART DIMENSIONS.sql
+JOB - PROCESS SQL AGENT DATA MART HISTORY.sq;
+JOB - PROCESS SQL AGENT DATA MART ACTIVITY.sql
+
+NOTES:
+- I removed the @owner_login_name parameter from the msdb.dbo.sp_add_job stored procedure. According to the documentation, it has
+  a default value of NULL which is interpreted as the current login name. 
+- The @command parameter for the msdb.dbo.sp_add_jobstep stored procedure uses the folder /SSISDB/SQL-AGENT-Data-Mart-ETL/SQL-Agent-Data-Mart-ETL
+  for the SSIS packages.
+
+
+CODE DEMO in the TIP
+The T-SQL for the demo is in the 
+
+
+
+
+
+
+ 
+
+
